@@ -151,7 +151,7 @@ if __name__ == "__main__":#
 
 # You can modify the following lines of code to test your implementation of the functions above.
 # The following lines of code will run the whole game if you have implemented all the functions above correctly.
-    data = readMap("map_nightmare.txt")
+    data = readMap("map_easy.txt")
     print("\033c", end="") # clear the screen
     printMap(data)
     while not checkWin(data):
