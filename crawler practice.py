@@ -1,4 +1,6 @@
 from requests_html import HTMLSession
+import pandas as pd
+
 session = HTMLSession()
 url = 'https://www.jianshu.com/p/85f4624485b9'
 r = session.get(url)
@@ -16,5 +18,7 @@ def get_text_link_from_sel(sel):
     except :
         return None
 
-sel = 'body > div.note > div.post > div.article > div.show-content > div > p:nth-child(6) > a'
-print(get_text_link_from_sel(sel))
+sel = '#__next > div._21bLU4._3kbg6I > div > div._gp-ck > section:nth-child(1) > article > p > a'
+df = pd.DataFrame(get_text_link_from_sel(sel))
+df.columns = ['text', 'link']
+df.to_csv('E:/大一下学期/SI100/My-own-python-library/output.csv', encoding='gbk', index=False)
