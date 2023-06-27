@@ -1,7 +1,7 @@
 import docx
 import pandas as pd
 
-doc = docx.Document('E:/综合事务/2022年考生分档表.docx')
+doc = docx.Document('E:/综合事务/2023年考生分档情况.docx')
 text = ''
 for para in doc.paragraphs:
     text += para.text + '\n'
@@ -20,7 +20,10 @@ for i in range(3, len(text_list)) :
     else :
         grade.append(text_list[i])
 
-number = number[0: 2724]
+length = min(len(number), len(name), len(grade))
+number = number[0:length]
+name = name[0:length]
+grade = grade[0:length]
 
 df = pd.DataFrame({'number':number, 'name':name, 'grade':grade})
-df.to_csv('E:/output.csv', encoding= 'GBK', index= False)
+df.to_csv('E:/综合事务/2023级上科大新生分档情况表.csv', encoding= 'GBK', index= False)
